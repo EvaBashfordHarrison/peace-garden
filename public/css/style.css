@@ -1,0 +1,38 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* disables scroll */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0; /* optional */
+}
+canvas {
+  display: block;
+}
+
+h1{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  color: #ffcc11;
+  padding: 10px;
+}
+
+a {
+  color: #ffcc11;
+  text-decoration: none;
+}
+
+.p5-button {
+  background-color: #0e0e0e;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
