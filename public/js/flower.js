@@ -2,7 +2,6 @@
 class Flower {
   constructor(x) {
     this.x = x;
-    // this.char = char;
     this.yOffset = 0;
     this.randSway = random(-100,100);
     this.stemMax = random(50,600);

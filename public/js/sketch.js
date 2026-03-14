@@ -31,7 +31,7 @@ let peaceValue;
 
 
 function preload() {
-  data = loadTable('/public/data/military.csv', 'csv', 'header');
+  data = loadTable('/data/military.csv', 'csv', 'header');
 }
 
 function setup() {
@@ -87,7 +87,7 @@ function draw() {
     textXMotion = -700;
   }
 
-  // flowers draw; 
+  // ------- flowers draw; 
   for (let i = 0; i < flowers.length; i++) {
     flowers[i].update();
     flowers[i].display();
@@ -95,6 +95,7 @@ function draw() {
   fill(50, 90);
   textSize(10);
   noStroke();
+  // footer text for reference 
   text('Data reference from: Abhijit Dahatonde | Updated 3 years ago. Reference: https://www.kaggle.com/datasets/abhijitdahatonde/global-armed-forces-dataset?', 20, height-30);
 }
 
@@ -104,7 +105,6 @@ function updateVisual() {
   armyValue = float(trim(army[index])); 
   peaceValue = (1000 - armyValue) / 10;
   console.log(selectedCountry);
-  // drawFlowers(armyValue);
   drawFlowers(peaceValue);
   console.log(armyValue);
   console.log("peace percentage is: "+ peaceValue);
