@@ -1,6 +1,6 @@
 // ------------------------------ Flower class -----------------------------------
 class Flower {
-  constructor(x) {
+  constructor(x, petalMax) {
     this.x = x;
     this.yOffset = 0;
     this.randSway = random(-100,100);
@@ -8,7 +8,8 @@ class Flower {
     this.middleSize = 0;
     this.middleMax = random(2,30);
     this.petalSize = 0;
-    this.petalMax = random(6,120);
+    // this.petalMax = random(6,120);
+    this.petalMax = petalMax;
     this.petalCount = random(fibonacci);
     this.opacity = 200;
     this.col = random(palette);

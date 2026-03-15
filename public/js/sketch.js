@@ -115,7 +115,10 @@ function drawFlowers(value) {
 
   for (let i = 0; i < peaceValue; i++) {
     let xPos = random(100, width - 100);
-    flowers.push(new Flower(xPos));
+    let size = map(peaceValue, 60,100, 10,120);
+    // flowers.push(new Flower(x, petalMax));
+
+    flowers.push(new Flower(xPos, size));
   }
 }
 
