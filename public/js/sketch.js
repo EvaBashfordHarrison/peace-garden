@@ -1,29 +1,22 @@
 let customFont;
 
-// empty array for flowers 
-let flowers = [];
-let fibonacci = [3,5,8,13,21];
+let flowers = []; // empty array for flowers 
+let fibonacci = [3,5,8,13,21]; // define amount of petals array 
 
-// empty array for color palette
-let palette = [];
+let palette = []; // empty array for color palette
 
-// buttons 
-let select; 
+let select; // buttons 
 
-// text settings 
-let textXMotion = 1;
+let textXMotion = 1; // create ticker text across the screen 
 
-let url;
-let peace;
-
-///// csv things 
+// csv
+let url; 
+let peace; 
 let peaceCounts = [];
-
 let data;
 let countries;
 let army;
 let peaceCount;
-
 let selectedCountry;
 let index;
 let armyValue;
@@ -40,22 +33,15 @@ function setup() {
   customFont = loadFont('fonts/RobotoMono-VariableFont_wght.ttf');
 
   // CSV setup 
-  let numRows = data.getRowCount();
+  let numRows = data.getRowCount(); // test 
   countries = data.getColumn('Country');
   army = data.getColumn('Per 1,000 capita(total)');
 
-  console.log(countries[3]);
-  console.log(army[3])
-  console.log(numRows);
-
-  let m = max(army);
-  console.log("highest number:" + m)
-
   // dropdown list 
   select = createSelect();
-  select.position(20, 58); // Relative to the top-left of the page
-  select.style('z-index', '10'); // High z-index ensures it sits ON TOP of canvas
-  for (let i = 0; i < countries.length; i++) { // push list of countries 
+  select.position(20, 58); 
+  select.style('z-index', '10'); 
+  for (let i = 0; i < countries.length; i++) { // push list of countries into the select box 
     select.option(countries[i]);
   }
   // WHEN SELECTED --> 
@@ -74,9 +60,11 @@ function setup() {
 function draw() {
   background(240);
 
+  // start screen! 
   if (selectedCountry === undefined && armyValue === undefined) {
     drawHeaderText = 'Choose a country to begin'
   } else {
+    // when country selected 
     drawHeaderText = `${selectedCountry} HAS ${armyValue} PER 1000 CAPITA.`;   
   }
 
@@ -95,6 +83,7 @@ function draw() {
   fill(50, 90);
   textSize(10);
   noStroke();
+  
   // footer text for reference 
   text('Data reference from: Abhijit Dahatonde | Updated 3 years ago. Reference: https://www.kaggle.com/datasets/abhijitdahatonde/global-armed-forces-dataset?', 20, height-30);
 }
@@ -103,21 +92,19 @@ function updateVisual() {
   selectedCountry = select.value();
   index = countries.indexOf(selectedCountry);
   armyValue = float(trim(army[index])); 
-  peaceValue = (1000 - armyValue) / 10;
+  peaceValue = (1000 - armyValue) / 10; // gives a workable percentage of peace 
   console.log(selectedCountry);
   drawFlowers(peaceValue);
   console.log(armyValue);
-  console.log("peace percentage is: "+ peaceValue);
+  console.log("peace percentage is: "+ peaceValue); // helper 
 }
 
 function drawFlowers(value) {
-  flowers = [];
+  flowers = []; // ampty 
 
   for (let i = 0; i < peaceValue; i++) {
-    let xPos = random(100, width - 100);
-    let size = map(peaceValue, 60,100, 10,120);
-    // flowers.push(new Flower(x, petalMax));
-
+    let xPos = random(100, width - 100); // draw randomly across the page horizontally 
+    let size = map(peaceValue, 60,100, 10,120); // if north korea for example which is 70%, smaller flowers. 
     flowers.push(new Flower(xPos, size));
   }
 }
@@ -139,7 +126,7 @@ function tickerText(xPos, updateHeaderText) {
     text(`Peace Value is ${peaceValue}`, 300,73);
   }
 
-  // CREATE PIE GRAPH OF PEACE (peace pie?)
+  // CREATE PIE GRAPH OF PEACE 
   let lines = 20;
   let glyphAngle = 360/lines;
   let radius = 15;

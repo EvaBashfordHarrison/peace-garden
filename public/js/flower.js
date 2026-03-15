@@ -1,21 +1,19 @@
 // ------------------------------ Flower class -----------------------------------
 class Flower {
-  constructor(x, petalMax) {
+  constructor(x, petalMax) { // map the petal max size later 
     this.x = x;
     this.yOffset = 0;
     this.randSway = random(-100,100);
     this.stemMax = random(50,600);
     this.middleSize = 0;
     this.middleMax = random(2,30);
-    this.petalSize = 0;
-    // this.petalMax = random(6,120);
+    this.petalSize = 0; // this starts at 0 and is updated with the petal max 
     this.petalMax = petalMax;
-    this.petalCount = random(fibonacci);
-    this.opacity = 200;
-    this.col = random(palette);
+    this.petalCount = random(fibonacci); // making sure the petals always fit around a cirle, fibonacci decalred earlier. 
+    this.col = random(palette); // predefined palette of blues and greens 
 
-    this.amplitude = random(5,30); // defines the sway... 
-    this.theta = random(TWO_PI); // speed 
+    this.amplitude = random(5,30); // defines the sway animation 
+    this.theta = random(TWO_PI); // speed of the sway 
   }
 
   update() {
@@ -40,7 +38,6 @@ class Flower {
 display() {
 
   let c = color(this.col);
-  c.setAlpha(this.opacity);
 
   stroke("#637961");
   noFill();
@@ -51,7 +48,7 @@ display() {
 
   // ---------------MIDDLE 
   if (this.yOffset >= this.stemMax) {
-    stroke(100);
+    stroke(100); 
     ellipse(this.x + sin(this.theta) * this.amplitude, height - this.yOffset, this.middleSize)
   }
   
